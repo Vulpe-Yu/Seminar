@@ -1,0 +1,18 @@
+degreeInC = input('輸入攝氏溫度範圍[初值:增量:終值]：')
+%得到溫度初值、增量、終值。
+for i=1:1:length(degreeInC) %for i = 初值:增量:終值。
+    temperatureK(i) = degreeInC(i)+273.15 %攝氏溫度轉絕對溫度
+    Xaxis(i) = 1000/temperatureK(i) %得出X軸
+    ni(i) = 3.93*10^16*temperatureK(i)^(3/2)*exp(-7000/temperatureK(i))
+end
+semilogy(Xaxis,ni); %描點繪出曲線，格式X軸,Y軸，Y軸取對數座標。
+xlabel('ni'); %X軸標籤。
+ylabel('1000/T'); %Y軸標籤。
+
+%溫度正反遞增皆可
+%X軸會自動調整為正向
+
+%雙線性座標：plot
+%X軸對數座標：semilogx
+%Y軸對數座標：semilogy
+%雙對數座標：loglog

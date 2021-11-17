@@ -6,8 +6,8 @@ for i=1:1:length(degreeInC) %for i = 初值:增量:終值。
     ni(i) = 3.93*10^16*temperatureK(i)^(3/2)*exp(-7000/temperatureK(i))
 end
 semilogy(Xaxis,ni); %描點繪出曲線，格式X軸,Y軸，Y軸取對數座標。
-xlabel('ni'); %X軸標籤。
-ylabel('1000/T'); %Y軸標籤。
+xlabel('1000/T'); %X軸標籤。
+ylabel('ni'); %Y軸標籤。
 
 %溫度正反遞增皆可
 %X軸會自動調整為正向

@@ -1,0 +1,37 @@
+%【NMOS】
+Na = input('輸入摻雜濃度Na(cm^-3)：');
+tox = input('輸入氧化層厚度(nm)：');
+Qox = input('輸入氧化層電荷(Coul)：');
+q = 1.6 * 10^(-19);
+Esi = 11.7;
+Esio2 = 3.9;
+epsilon = 8.854 * 10^(-14);
+kT = 0.0259; %in Volt
+ni = 10^10;
+Eg = 1.12;
+PhiB = kT * log(Na/ni);
+WF = - kT * log(Na/ni) - Eg / 2;
+Cox = Esio2 * epsilon * 10^7 / tox;
+Wmax = sqrt(4*Esi*epsilon*PhiB/q/Na);
+Qsc = -q * Na * Wmax;
+Vt = WF - Qox / Cox - Qsc / Cox + 2 * PhiB;
+fprintf('Threshold Voltage = %i Volt\n', Vt)
+
+%【PMOS】
+Nd = input('輸入摻雜濃度Nd：');
+tox = input('輸入氧化層厚度(nm)：');
+Qox = input('輸入氧化層電荷(Coul)：');
+q = 1.6 * 10^(-19);
+Esi = 11.7;
+Esio2 = 3.9;
+epsilon = 8.854 * 10^(-14);
+kT = 0.0259; %in Volt
+ni = 10^10;
+Eg = 1.12;
+PhiB = - kT * log(Nd/ni);
+WF = kT * log(Nd/ni) + Eg / 2;
+Cox = Esio2 * epsilon * 10^7 / tox;
+Wmax = sqrt(-4*Esi*epsilon*PhiB/q/Nd);
+Qsc = q * Nd * Wmax;
+Vt = WF - Qox / Cox - Qsc / Cox + 2 * PhiB;
+fprintf('Threshold Voltage = %i Volt\n', Vt)

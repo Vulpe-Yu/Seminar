@@ -1,0 +1,29 @@
+%【NMOS】
+Na = input('輸入摻雜濃度Na：');
+kT = 0.0259; %in Volt
+ni = 10^10;
+Eg = 1.3877353;
+WF = - kT * log(Na/ni) - Eg / 2;
+fprintf('Work Function = %i Volt\n', WF)
+
+%【PMOS】
+Nd = input('輸入摻雜濃度Nd：');
+kT = 0.0259; %in Volt
+ni = 10^10;
+Eg = 1.3877353;
+WF = kT * log(Nd/ni) + Eg / 2;
+fprintf('Work Function = %i Volt\n', WF)
+
+%【Ploting for both NMOS & PMOS】
+N = input('輸入摻雜濃度：');
+kT = 0.0259;
+ni = 10^10;
+Eg = 1.12;
+for i=1:1:length(N)
+    WFn(i) = - kT * log(N(i)/ni) - Eg / 2;
+    WFp(i) = kT * log(N(i)/ni) + Eg / 2;
+end
+semilogx(N,WFn,N,WFp);
+xlabel('摻雜濃度(cm^-3)'); %X軸標籤。
+ylabel('Work Function(eV)'); %Y軸標籤。
+%參考輸入：[10^15:5*10^15:10^17]

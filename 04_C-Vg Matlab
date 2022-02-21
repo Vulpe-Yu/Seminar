@@ -1,4 +1,4 @@
-%【NMOS】
+【NMOS】
 Na = input('輸入摻雜濃度Na(cm^-3)：');
 tox = input('輸入氧化層厚度(nm)：');
 Qox = input('輸入氧化層電荷(Coul)：');
@@ -21,9 +21,12 @@ for i=1:1:length(Vg)
     if Vg(i) < Vfb
         C(i) = Cox;
     elseif Vg(i) < Vt
-        C(i) = Cox / sqrt(1+(2*Esio2*epsilon*Esio2*epsilon*Vg(i))/(q*Na*Esi*epsilon*tox*tox));
+        X1 = 2*Esio2*epsilon*Esio2*epsilon*(Vg(i)-Vfb);
+        X2 = q*Na*Esi*epsilon*tox*tox*10^(-14);
+        C(i) = Cox / sqrt(1+X1/X2);
+        Cmin = C(i);
     else
-        C(i) = Cox;
+        C(i) = Cmin;
     end 
 end
 plot(Vg,C);
@@ -31,7 +34,7 @@ xlabel('Gate Voltage(Volt)'); %X軸標籤。
 ylabel('C(F)'); %Y軸標籤。
 
 %參考輸入：
-%輸入摻雜濃度Na(cm^-3)：10^16
-%輸入氧化層厚度(nm)：1
-%輸入氧化層電荷(Coul)：-0.000003
-%輸入Gate Voltage範圍(Volt)：[-0.2:0.05:0.8]
+輸入摻雜濃度Na(cm^-3)：10^16
+輸入氧化層厚度(nm)：1
+輸入氧化層電荷(Coul)：-0.000003
+輸入Gate Voltage範圍(Volt)：[-0.1:0.00005:0.7]

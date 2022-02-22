@@ -29,9 +29,12 @@ for i=1:1:length(Vg)
         C(i) = Cmin;
     end 
 end
+for i=1:1:length(C)
+    C(i) = C(i) / 10^6;
+end
 plot(Vg,C);
 xlabel('Gate Voltage(Volt)'); %X軸標籤。
-ylabel('C(F)'); %Y軸標籤。
+ylabel('C(uF)'); %Y軸標籤。
 
 %參考輸入：
 輸入摻雜濃度Na(cm^-3)：10^16

@@ -30,7 +30,7 @@ for i=1:1:length(Vg)
     end 
 end
 for i=1:1:length(C)
-    C(i) = C(i) / 10^6;
+    C(i) = C(i) * 10^6;
 end
 plot(Vg,C);
 xlabel('Gate Voltage(Volt)'); %X軸標籤。
